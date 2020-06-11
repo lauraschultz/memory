@@ -1,11 +1,25 @@
 .cardContainer {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
   box-sizing: border-box;
+  margin:80px;
 }
 
 .card {
-  flex: 1 0 21%; /* explanation below */
-  margin: 5px;
-  height: 100px;
+  width:25%;
+  height:0;
+  padding-bottom: 25%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.card-img {
+  border: 2px solid gray;
+  border-radius: 5px;
+  margin:5px;
+  width:auto;
+  height:0;
+  padding-bottom: 90%;
+  background-size: cover;
+  background-position: center;
 }
