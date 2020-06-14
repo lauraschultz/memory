@@ -5,13 +5,13 @@ import "./App.css";
 
 const sizes = {
   //number of PAIRS
-  'small': 8,
-  'medium': 10,
-  'large': 12,
-  'x-large': 14
+  small: 8,
+  medium: 10,
+  large: 12,
+  "x-large": 14,
 };
 
-var currentSize = 'small';
+var currentSize = "small";
 
 const cards = [
   { key: "banana" },
@@ -39,7 +39,7 @@ function Card(props) {
     <div className="card">
       <div
         style={{ backgroundImage: "url(" + img + ")" }}
-        className={"card-img " + (props.faceSideUp ? 'pic' : 'no-pic')}
+        className={"card-img " + (props.faceSideUp ? "pic" : "no-pic")}
         onClick={props.onClick}
       ></div>
     </div>
@@ -56,9 +56,8 @@ class Game extends React.Component {
       matchedPairs: 0,
       flippedCard: undefined,
       currentCard: undefined,
-      acceptingClick: true
+      acceptingClick: true,
     };
-
   }
 
   handleClick(i) {
@@ -97,18 +96,24 @@ class Game extends React.Component {
           this.state.currentCard.flipped = true;
           if (this.state.flippedCard.key === this.state.currentCard.key) {
             // match
-            this.setState({
-              matchedPairs: this.state.matchedPairs + 1,
-              flippedCard: undefined,
-            }, () => {
-              if (this.hasWon()) {
-                const b = localStorage.getItem(currentSize);
-                console.log(b);
-                if (b === null || b > this.state.clickedPairs.toString()) {
-                  localStorage.setItem(currentSize, this.state.clickedPairs.toString());
+            this.setState(
+              {
+                matchedPairs: this.state.matchedPairs + 1,
+                flippedCard: undefined,
+              },
+              () => {
+                if (this.hasWon()) {
+                  const b = localStorage.getItem(currentSize);
+                  console.log(b);
+                  if (b === null || b > this.state.clickedPairs.toString()) {
+                    localStorage.setItem(
+                      currentSize,
+                      this.state.clickedPairs.toString()
+                    );
+                  }
                 }
               }
-            });
+            );
           } else {
             // no match
             this.setState({
@@ -127,7 +132,6 @@ class Game extends React.Component {
         }
       }
     );
-
   }
 
   initializeArray() {
@@ -148,7 +152,7 @@ class Game extends React.Component {
       matchedPairs: 0,
       flippedCard: undefined,
       currentCard: undefined,
-      acceptingClick: true
+      acceptingClick: true,
     });
   }
 
@@ -158,16 +162,24 @@ class Game extends React.Component {
 
   render() {
     const bestScore = localStorage.getItem(currentSize);
-    const bestScoreMsg = (bestScore ? bestScore : 'N/A');
-    const winMsgArray = ['Nice job!', 'Way to go!', 'Congrats!'];
-    const winMsg = winMsgArray[Math.floor(Math.random()*winMsgArray.length)];
+    const bestScoreMsg = bestScore ? bestScore : "N/A";
+    const winMsgArray = ["Nice job!", "Way to go!", "Congrats!"];
+    const winMsg = winMsgArray[Math.floor(Math.random() * winMsgArray.length)];
     return (
       <div>
-        <div className={(this.hasWon() ? "win-msg-container" : "no-show")}>
+        <div className={this.hasWon() ? "win-msg-container" : "no-show"}>
           <div className="win-msg">
             <h2>{winMsg}</h2>
-            <p>{'Your score is '}<strong>{this.state.clickedPairs}</strong></p>
-            <button className="play-btn" onClick={() => this.changeSize(currentSize)}>Play again</button>
+            <p>
+              {"Your score is "}
+              <strong>{this.state.clickedPairs}</strong>
+            </p>
+            <button
+              className="play-btn"
+              onClick={() => this.changeSize(currentSize)}
+            >
+              Play again
+            </button>
           </div>
         </div>
         <div className="cardContainer">
@@ -185,8 +197,14 @@ class Game extends React.Component {
             })}
           </div>
           <div className="score-container">
-            <span style={{ float: 'left' }}>{'Current score: '}<strong>{this.state.clickedPairs}</strong></span>
-            <span style={{ float: 'right' }}>{'Best score: '}<strong>{bestScoreMsg}</strong></span>
+            <span style={{ float: "left" }}>
+              {"Current score: "}
+              <strong>{this.state.clickedPairs}</strong>
+            </span>
+            <span style={{ float: "right" }}>
+              {"Best score: "}
+              <strong>{bestScoreMsg}</strong>
+            </span>
           </div>
           {this.state.cards.map((c, i) => {
             return (
@@ -204,8 +222,6 @@ class Game extends React.Component {
     );
   }
 }
-
-
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
