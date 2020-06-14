@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/memory/static/css/main.c4be4343.chunk.css",
+    "main.js": "/memory/static/js/main.9e55df6b.chunk.js",
+    "main.js.map": "/memory/static/js/main.9e55df6b.chunk.js.map",
+    "runtime-main.js": "/memory/static/js/runtime-main.31103d8b.js",
+    "runtime-main.js.map": "/memory/static/js/runtime-main.31103d8b.js.map",
+    "static/js/2.4183dfaa.chunk.js": "/memory/static/js/2.4183dfaa.chunk.js",
+    "static/js/2.4183dfaa.chunk.js.map": "/memory/static/js/2.4183dfaa.chunk.js.map",
+    "index.html": "/memory/index.html",
+    "precache-manifest.b09895ac383cf9009ad0b4a996e25df4.js": "/memory/precache-manifest.b09895ac383cf9009ad0b4a996e25df4.js",
+    "service-worker.js": "/memory/service-worker.js",
+    "static/css/main.c4be4343.chunk.css.map": "/memory/static/css/main.c4be4343.chunk.css.map",
+    "static/js/2.4183dfaa.chunk.js.LICENSE.txt": "/memory/static/js/2.4183dfaa.chunk.js.LICENSE.txt",
+    "static/media/apple.png": "/memory/static/media/apple.826fa561.png",
+    "static/media/banana.png": "/memory/static/media/banana.209ca224.png",
+    "static/media/bell-pepper.png": "/memory/static/media/bell-pepper.6dfc7158.png",
+    "static/media/brocolli.png": "/memory/static/media/brocolli.bb9304a3.png",
+    "static/media/carrot.png": "/memory/static/media/carrot.ab883e54.png",
+    "static/media/App.css": "/memory/static/media/denim.6e7e8992.png",
+    "static/media/eggplant.png": "/memory/static/media/eggplant.2c6cd0e3.png",
+    "static/media/grapes.png": "/memory/static/media/grapes.eea2312d.png",
+    "static/media/logo.svg": "/memory/static/media/logo.5d5d9eef.svg",
+    "static/media/mushroom.png": "/memory/static/media/mushroom.b07d0d5f.png",
+    "static/media/onion.png": "/memory/static/media/onion.8779b99f.png",
+    "static/media/pear.png": "/memory/static/media/pear.287f220e.png",
+    "static/media/pineapple.png": "/memory/static/media/pineapple.065e665e.png",
+    "static/media/red-pepper.png": "/memory/static/media/red-pepper.3dfa01f0.png",
+    "static/media/strawberry.png": "/memory/static/media/strawberry.d3364fb5.png",
+    "static/media/tomato.png": "/memory/static/media/tomato.0025f2fd.png",
+    "static/media/white-waves.png": "/memory/static/media/white-waves.a06a3248.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.31103d8b.js",
+    "static/js/2.4183dfaa.chunk.js",
+    "static/css/main.c4be4343.chunk.css",
+    "static/js/main.9e55df6b.chunk.js"
+  ]
+}
