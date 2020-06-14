@@ -33,7 +33,7 @@ const cards = [
 function Card(props) {
   const img = props.faceSideUp
     ? require("./vegetables/" + props.image + ".png")
-    : require("./topography.png");
+    : require("./white-waves.png");
   // const content = props.faceSideUp ? props.image : null;
   return (
     <div className="card">
@@ -58,7 +58,7 @@ class Game extends React.Component {
       currentCard: undefined,
       acceptingClick: true
     };
-    
+
   }
 
   handleClick(i) {
@@ -72,7 +72,6 @@ class Game extends React.Component {
         currentCard: undefined,
         acceptingClick: true,
       });
-      console.log("done");
     };
     if (!this.state.acceptingClick) {
       //both are set
@@ -102,9 +101,12 @@ class Game extends React.Component {
               matchedPairs: this.state.matchedPairs + 1,
               flippedCard: undefined,
             }, () => {
-              if(this.state.matchedPairs === sizes[currentSize]){
-                console.log('woo!!');
-                localStorage.setItem(currentSize, this.state.clickedPairs.toString());
+              if (this.hasWon()) {
+                const b = localStorage.getItem(currentSize);
+                console.log(b);
+                if (b === null || b > this.state.clickedPairs.toString()) {
+                  localStorage.setItem(currentSize, this.state.clickedPairs.toString());
+                }
               }
             });
           } else {
@@ -125,11 +127,10 @@ class Game extends React.Component {
         }
       }
     );
-    
+
   }
 
   initializeArray() {
-    console.log('init array');
     const halfArr = cards.slice(0, sizes[currentSize]);
     let arr = halfArr.concat([...halfArr].map((i) => ({ ...i })));
     shuffleArray(arr);
@@ -151,39 +152,54 @@ class Game extends React.Component {
     });
   }
 
+  hasWon() {
+    return this.state.matchedPairs === sizes[currentSize];
+  }
+
   render() {
     const bestScore = localStorage.getItem(currentSize);
     const bestScoreMsg = (bestScore ? bestScore : 'N/A');
+    const winMsgArray = ['Nice job!', 'Way to go!', 'Congrats!'];
+    const winMsg = winMsgArray[Math.floor(Math.random()*winMsgArray.length)];
     return (
-      <div className="cardContainer">
-        <div className="switch-container">
-          {Object.entries(sizes).map(([s, n]) => {
+      <div>
+        <div className={(this.hasWon() ? "win-msg-container" : "no-show")}>
+          <div className="win-msg">
+            <h2>{winMsg}</h2>
+            <p>{'Your score is '}<strong>{this.state.clickedPairs}</strong></p>
+            <button className="play-btn" onClick={() => this.changeSize(currentSize)}>Play again</button>
+          </div>
+        </div>
+        <div className="cardContainer">
+          <div className="switch-container">
+            {Object.entries(sizes).map(([s, n]) => {
+              return (
+                <span
+                  key={s}
+                  className={"option " + (currentSize === s ? "selected" : "")}
+                  onClick={() => this.changeSize(s)}
+                >
+                  {s}
+                </span>
+              );
+            })}
+          </div>
+          <div className="score-container">
+            <span style={{ float: 'left' }}>{'Current score: '}<strong>{this.state.clickedPairs}</strong></span>
+            <span style={{ float: 'right' }}>{'Best score: '}<strong>{bestScoreMsg}</strong></span>
+          </div>
+          {this.state.cards.map((c, i) => {
             return (
-              <span
-                key={s}
-                className={"option " + (currentSize === s ? "selected" : "")}
-                onClick={() => this.changeSize(s)}
-              >
-                {s}
-              </span>
+              <Card
+                key={i}
+                faceSideUp={c.flipped}
+                // image={c.key}
+                image={c.key}
+                onClick={() => this.handleClick(i)}
+              />
             );
           })}
         </div>
-        <div className="score-container">
-          <span style={{float:'left'}}>{'Current score: ' + this.state.clickedPairs}</span>
-          <span style={{float:'right'}}>{'Best score: ' + bestScoreMsg}</span>
-        </div>
-        {this.state.cards.map((c, i) => {
-          return (
-            <Card
-              key={i}
-              faceSideUp={c.flipped}
-              // image={c.key}
-              image={c.key}
-              onClick={() => this.handleClick(i)}
-            />
-          );
-        })}
       </div>
     );
   }

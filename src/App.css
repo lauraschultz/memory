@@ -1,17 +1,56 @@
-html, body {
-  width:100vw;
+html,
+body {
+  width: 100vw;
   height: 100vh;
-  margin:0;
+  margin: 0;
+  font-family: monospace;
+  background-image: url("./denim.png");
 }
 
 #root {
-  width:100vw;
+  width: 100vw;
   height: 100vh;
+}
+
+.win-msg-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(20, 20, 20, 0.75);
+  text-align: center;
+}
+
+.no-show {
+  display: none;
+}
+
+.win-msg {
+  background-color: white;
+  padding: 40px;
+  display: inline-block;
+  margin-top: 35vh;
+  border-radius: 5px;
+  box-shadow: 2px 2px 40px black;
+}
+
+.play-btn {
+  padding: 12px 25px;
+  background-color: #44075a;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: small;
+}
+
+.win-msg h2 {
+  margin-top:0;
 }
 
 .cardContainer {
   box-sizing: border-box;
-  margin: 10vw;
+  margin: 50px 1vw;
   text-align: center;
 }
 
@@ -24,35 +63,55 @@ html, body {
 }
 
 .card-img {
-  border: 2px solid gray;
+  border: 1px solid #f0f0f0;
   border-radius: 5px;
   margin: 5px;
   width: auto;
   height: 0;
   padding-bottom: 90%;
-  background-size: cover;
   background-position: center;
+}
+
+.card-img.no-pic {
+  background-size: auto;
+}
+
+.card-img.pic {
+  background-size: 92% auto;
+  background-repeat: no-repeat;
+  background-color: #fafafa;
 }
 
 .switch-container {
   display: inline;
   padding: 10px 20px;
   border-radius: 10px;
-  border: 1px solid gray;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5) inset,
+    0px 0px 1px rgba(0, 0, 0, 0.6) inset;
+  background-color: white;
 }
 
 .score-container {
-  overflow: auto;
+  padding: 20px;
+  color: white;
 }
 
 .option {
   padding: 8px;
+  cursor: pointer;
 }
 
 .option.selected {
-  background-color: green;
+  background-color: #3f8d1a;
   color: white;
   border-radius: 2px;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 350px) {
+  .cardContainer {
+    margin: 10vw;
+  }
 }
 
 @media only screen and (min-width: 600px) {
