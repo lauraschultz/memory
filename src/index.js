@@ -61,8 +61,6 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
-    // const currentCard = this.state.cards[i];
-    // console.log('currentcard is', currentCard);
     const flipBothOver = () => {
       this.state.flippedCard.flipped = false;
       this.state.currentCard.flipped = false;
@@ -104,7 +102,6 @@ class Game extends React.Component {
               () => {
                 if (this.hasWon()) {
                   const b = localStorage.getItem(currentSize);
-                  console.log(b);
                   if (b === null || b > this.state.clickedPairs.toString()) {
                     localStorage.setItem(
                       currentSize,
